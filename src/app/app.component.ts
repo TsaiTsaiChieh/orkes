@@ -7,6 +7,9 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatTableModule } from '@angular/material/table';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { SiderComponent } from './sider/sider.component';
+
 interface Workflow {
   workflowName: string;
   description: string;
@@ -29,6 +32,8 @@ interface Workflow {
     MatTableModule,
     MatIconModule,
     MatButtonModule,
+    MatSidenavModule,
+    SiderComponent,
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',

@@ -1,0 +1,52 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav mode="side" opened>
+    <mat-toolbar>Orkes</mat-toolbar>
+    <mat-nav-list>
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>Executions</mat-panel-title>
+        </mat-expansion-panel-header>
+        <mat-list-item>Workflow</mat-list-item>
+        <mat-list-item>Scheduler</mat-list-item>
+        <mat-list-item>Queue Monitor</mat-list-item>
+      </mat-expansion-panel>
+      <button mat-raised-button color="primary">Run Workflow</button>
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>Definitions</mat-panel-title>
+        </mat-expansion-panel-header>
+        <mat-list-item>Workflow</mat-list-item>
+        <mat-list-item>Task</mat-list-item>
+        <mat-list-item>Event Handler</mat-list-item>
+        <mat-list-item>Scheduler</mat-list-item>
+        <mat-list-item>Secrets</mat-list-item>
+        <mat-list-item>Webhook</mat-list-item>
+        <mat-list-item>AI Prompts</mat-list-item>
+        <mat-list-item>Environment Variables</mat-list-item>
+      </mat-expansion-panel>
+      <mat-list-item>Integrations</mat-list-item>
+      <mat-list-item>Template Explorer</mat-list-item>
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>Access Control</mat-panel-title>
+        </mat-expansion-panel-header>
+        <mat-list-item>Applications</mat-list-item>
+      </mat-expansion-panel>
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>Help</mat-panel-title>
+        </mat-expansion-panel-header>
+        <mat-list-item>Docs</mat-list-item>
+        <mat-list-item>Requests</mat-list-item>
+        <mat-list-item>Support</mat-list-item>
+        <mat-list-item>Slack Community</mat-list-item>
+        <mat-list-item>Learning Journey</mat-list-item>
+      </mat-expansion-panel>
+      <mat-list-item>API Docs</mat-list-item>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <!-- 主内容 -->
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>

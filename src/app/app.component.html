@@ -1,80 +1,87 @@
-<mat-toolbar color="primary">
-  <span>WORKFLOW DEFINITIONS</span>
-</mat-toolbar>
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav mode="side" opened>
+    <app-sider></app-sider>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar color="primary">
+      <span>WORKFLOW DEFINITIONS</span>
+    </mat-toolbar>
+    <div class="content-container">
+      <mat-form-field class="example-full-width">
+        <mat-label>Quick search</mat-label>
+        <input matInput placeholder="Search workflow definitions">
+      </mat-form-field>
 
-<div class="container">
-  <mat-form-field class="example-full-width">
-    <mat-label>Quick search</mat-label>
-    <input matInput placeholder="Search workflow definitions">
-  </mat-form-field>
+      <table mat-table [dataSource]="workflows" class="mat-elevation-z8">
 
-  <table mat-table [dataSource]="workflows" class="mat-elevation-z8">
+        <!-- Workflow Name Column -->
+        <ng-container matColumnDef="workflowName">
+          <th mat-header-cell *matHeaderCellDef> WORKFLOW NAME </th>
+          <td mat-cell *matCellDef="let element"> {{element.workflowName}} </td>
+        </ng-container>
 
-    <!-- Workflow Name Column -->
-    <ng-container matColumnDef="workflowName">
-      <th mat-header-cell *matHeaderCellDef> WORKFLOW NAME </th>
-      <td mat-cell *matCellDef="let element"> {{element.workflowName}} </td>
-    </ng-container>
+        <!-- Description Column -->
+        <ng-container matColumnDef="description">
+          <th mat-header-cell *matHeaderCellDef> DESCRIPTION </th>
+          <td mat-cell *matCellDef="let element"> {{element.description}} </td>
+        </ng-container>
 
-    <!-- Description Column -->
-    <ng-container matColumnDef="description">
-      <th mat-header-cell *matHeaderCellDef> DESCRIPTION </th>
-      <td mat-cell *matCellDef="let element"> {{element.description}} </td>
-    </ng-container>
+        <!-- Tags Column -->
+        <ng-container matColumnDef="tags">
+          <th mat-header-cell *matHeaderCellDef> TAGS </th>
+          <td mat-cell *matCellDef="let element"> <span *ngFor="let tag of element.tags" class="tag">{{tag}}</span>
+          </td>
+        </ng-container>
 
-    <!-- Tags Column -->
-    <ng-container matColumnDef="tags">
-      <th mat-header-cell *matHeaderCellDef> TAGS </th>
-      <td mat-cell *matCellDef="let element"> <span *ngFor="let tag of element.tags" class="tag">{{tag}}</span> </td>
-    </ng-container>
+        <!-- Created Time Column -->
+        <ng-container matColumnDef="createdTime">
+          <th mat-header-cell *matHeaderCellDef> CREATED TIME </th>
+          <td mat-cell *matCellDef="let element"> {{element.createdTime | date:'yyyy-MM-dd HH:mm:ss'}} </td>
+        </ng-container>
 
-    <!-- Created Time Column -->
-    <ng-container matColumnDef="createdTime">
-      <th mat-header-cell *matHeaderCellDef> CREATED TIME </th>
-      <td mat-cell *matCellDef="let element"> {{element.createdTime | date:'yyyy-MM-dd HH:mm:ss'}} </td>
-    </ng-container>
+        <!-- Latest Version Column -->
+        <ng-container matColumnDef="latestVersion">
+          <th mat-header-cell *matHeaderCellDef> LATEST VERSION </th>
+          <td mat-cell *matCellDef="let element"> {{element.latestVersion}} </td>
+        </ng-container>
 
-    <!-- Latest Version Column -->
-    <ng-container matColumnDef="latestVersion">
-      <th mat-header-cell *matHeaderCellDef> LATEST VERSION </th>
-      <td mat-cell *matCellDef="let element"> {{element.latestVersion}} </td>
-    </ng-container>
+        <!-- Owner Email Column -->
+        <ng-container matColumnDef="ownerEmail">
+          <th mat-header-cell *matHeaderCellDef> OWNER EMAIL </th>
+          <td mat-cell *matCellDef="let element"> {{element.ownerEmail}} </td>
+        </ng-container>
 
-    <!-- Owner Email Column -->
-    <ng-container matColumnDef="ownerEmail">
-      <th mat-header-cell *matHeaderCellDef> OWNER EMAIL </th>
-      <td mat-cell *matCellDef="let element"> {{element.ownerEmail}} </td>
-    </ng-container>
+        <!-- Task Count Column -->
+        <ng-container matColumnDef="taskCount">
+          <th mat-header-cell *matHeaderCellDef> TASK COUNT </th>
+          <td mat-cell *matCellDef="let element"> {{element.taskCount}} </td>
+        </ng-container>
 
-    <!-- Task Count Column -->
-    <ng-container matColumnDef="taskCount">
-      <th mat-header-cell *matHeaderCellDef> TASK COUNT </th>
-      <td mat-cell *matCellDef="let element"> {{element.taskCount}} </td>
-    </ng-container>
+        <!-- Executions Column -->
+        <ng-container matColumnDef="executions">
+          <th mat-header-cell *matHeaderCellDef> EXECUTIONS </th>
+          <td mat-cell *matCellDef="let element"> <a href="#">{{element.executions}}</a> </td>
+        </ng-container>
 
-    <!-- Executions Column -->
-    <ng-container matColumnDef="executions">
-      <th mat-header-cell *matHeaderCellDef> EXECUTIONS </th>
-      <td mat-cell *matCellDef="let element"> <a href="#">{{element.executions}}</a> </td>
-    </ng-container>
+        <!-- Actions Column -->
+        <ng-container matColumnDef="actions">
+          <th mat-header-cell *matHeaderCellDef> ACTIONS </th>
+          <td mat-cell *matCellDef="let element">
+            <button mat-icon-button>
+              <mat-icon>play_circle</mat-icon>
+            </button>
+            <button mat-icon-button>
+              <mat-icon>edit</mat-icon>
+            </button>
+            <button mat-icon-button>
+              <mat-icon>delete</mat-icon>
+            </button>
+          </td>
+        </ng-container>
 
-    <!-- Actions Column -->
-    <ng-container matColumnDef="actions">
-      <th mat-header-cell *matHeaderCellDef> ACTIONS </th>
-      <td mat-cell *matCellDef="let element">
-        <button mat-icon-button>
-          <mat-icon>play_circle</mat-icon>
-        </button>
-        <button mat-icon-button>
-          <mat-icon>edit</mat-icon>
-        </button>
-        <button mat-icon-button>
-          <mat-icon>delete</mat-icon>
-        </button>
-      </td>
-    </ng-container>
-
-    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-  </table>
-</div>
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>
